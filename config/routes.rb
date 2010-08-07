@@ -3,8 +3,8 @@ SampleApp::Application.routes.draw do |map|
 
   root :to => 'pages#home'
   
+  resources :users
   match '/signup', :to =>'users#new'
-  get "users/new" # will be eliminated soon
   
   match '/about', :to =>'pages#about'
   match '/contact', :to =>'pages#contact'
