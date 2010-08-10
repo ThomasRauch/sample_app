@@ -1,0 +1,73 @@
+silence@debianer:~/sample_app$ rspec spec/
+..........................................................FFFFFFFF..FF........
+
+Finished in 3.91 seconds
+78 examples, 10 failures
+
+1) UsersController GET 'edit' should be successful
+    Failure/Error: response.should be_success
+    expected success? to return true, got false
+    # ./spec/controllers/users_controller_spec.rb:138:in `block (3 levels) in <top (required)>'
+
+2) UsersController GET 'edit' should have the right title
+    Failure/Error: response.should have_selector("title", :content => "Edit user")
+    expected following output to contain a <title>Edit user</title> tag:
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+    <html><body>You are being <a href="http://test.host/signin">redirected</a>.</body></html>
+    # ./spec/controllers/users_controller_spec.rb:143:in `block (3 levels) in <top (required)>'
+
+3) UsersController GET 'edit' should have a link to change the Gravatar
+    Failure/Error: response.should have_selector("a", :href => gravatar_url,
+    expected following output to contain a <a href='http://gravatar.com/emails'>change</a> tag:
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+    <html><body>You are being <a href="http://test.host/signin">redirected</a>.</body></html>
+    # ./spec/controllers/users_controller_spec.rb:149:in `block (3 levels) in <top (required)>'
+
+4) UsersController PUT 'update' failure should render the 'edit' page
+    Failure/Error: response.should render_template('edit')
+    expecting <"edit"> but rendering with <"">.
+    Expected block to return true value.
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/actionpack-3.0.0.rc/lib/action_controller/test_case.rb:72:in `assert_template'
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/rspec-rails-2.0.0.beta.18/lib/rspec/rails/matchers/render_template.rb:8:in `block (2 levels) in <module:RenderTemplate>'
+    # ./spec/controllers/users_controller_spec.rb:170:in `block (4 levels) in <top (required)>'
+
+5) UsersController PUT 'update' failure should have the right title
+    Failure/Error: response.should have_selector("title", :content => "Edit user")
+    expected following output to contain a <title>Edit user</title> tag:
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+    <html><body>You are being <a href="http://test.host/signin">redirected</a>.</body></html>
+    # ./spec/controllers/users_controller_spec.rb:175:in `block (4 levels) in <top (required)>'
+
+6) UsersController PUT 'update' success should change the user's attributes
+    Failure/Error: @user.name.should  == user.name
+    undefined method `name' for nil:NilClass
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/activesupport-3.0.0.rc/lib/active_support/whiny_nil.rb:48:in `method_missing'
+    # ./spec/controllers/users_controller_spec.rb:190:in `block (4 levels) in <top (required)>'
+
+7) UsersController PUT 'update' success should redirect to the user show page
+    Failure/Error: response.should redirect_to(user_path(@user))
+    Expected response to be a redirect to <http://test.host/users/923> but was a redirect to <http://test.host/signin>
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/actionpack-3.0.0.rc/lib/action_dispatch/testing/assertions/response.rb:72:in `assert_redirected_to'
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/rspec-rails-2.0.0.beta.18/lib/rspec/rails/matchers/redirect_to.rb:7:in `block (2 levels) in <module:RedirectTo>'
+    # ./spec/controllers/users_controller_spec.rb:196:in `block (4 levels) in <top (required)>'
+
+8) UsersController PUT 'update' success should have a flash message
+    Failure/Error: flash[:success].should =~ /updated/
+    expected: /updated/,
+         got: nil (using =~)
+    # ./spec/controllers/users_controller_spec.rb:201:in `block (4 levels) in <top (required)>'
+
+9) UsersController authentication of edit/update pages for signed-in users should require matching users for 'edit'
+    Failure/Error: response.should redirect_to(root_path)
+    Expected response to be a redirect to <http://test.host/> but was a redirect to <http://test.host/signin>
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/actionpack-3.0.0.rc/lib/action_dispatch/testing/assertions/response.rb:72:in `assert_redirected_to'
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/rspec-rails-2.0.0.beta.18/lib/rspec/rails/matchers/redirect_to.rb:7:in `block (2 levels) in <module:RedirectTo>'
+    # ./spec/controllers/users_controller_spec.rb:236:in `block (4 levels) in <top (required)>'
+
+10) UsersController authentication of edit/update pages for signed-in users should require matching users for 'update'
+    Failure/Error: response.should redirect_to(root_path)
+    Expected response to be a redirect to <http://test.host/> but was a redirect to <http://test.host/signin>
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/actionpack-3.0.0.rc/lib/action_dispatch/testing/assertions/response.rb:72:in `assert_redirected_to'
+    # /home/silence/.rvm/gems/ruby-1.9.2-rc2@rails3/gems/rspec-rails-2.0.0.beta.18/lib/rspec/rails/matchers/redirect_to.rb:7:in `block (2 levels) in <module:RedirectTo>'
+    # ./spec/controllers/users_controller_spec.rb:241:in `block (4 levels) in <top (required)>'
+

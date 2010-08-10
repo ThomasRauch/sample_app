@@ -1,4 +1,4 @@
-SampleApp::Application.routes.draw do |map|
+SampleApp::Application.routes.draw do
 
 
   root :to => 'pages#home'
